@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp3", "WindowsFormsApp3\WindowsFormsApp3.csproj", "{F82BA54D-DCED-4657-BE37-935B112929CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp120", "..\ConsoleApp120\ConsoleApp120.csproj", "{AA0B31BF-CE68-48A2-AE8E-3F7C68942662}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figure", "Figure\Figure.csproj", "{08DFB2CF-C962-4B62-81CF-4A086247678E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{F82BA54D-DCED-4657-BE37-935B112929CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82BA54D-DCED-4657-BE37-935B112929CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82BA54D-DCED-4657-BE37-935B112929CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA0B31BF-CE68-48A2-AE8E-3F7C68942662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA0B31BF-CE68-48A2-AE8E-3F7C68942662}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA0B31BF-CE68-48A2-AE8E-3F7C68942662}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA0B31BF-CE68-48A2-AE8E-3F7C68942662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08DFB2CF-C962-4B62-81CF-4A086247678E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DFB2CF-C962-4B62-81CF-4A086247678E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DFB2CF-C962-4B62-81CF-4A086247678E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DFB2CF-C962-4B62-81CF-4A086247678E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
