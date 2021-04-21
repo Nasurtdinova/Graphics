@@ -14,6 +14,7 @@ namespace WindowsFormsApp3
     {
         private Form form2;
         private Form form3;
+        private Form form4;
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +38,13 @@ namespace WindowsFormsApp3
 
         private void btnLine_Click(object sender, EventArgs e)
         {
-
+            form3 = new FrmLine();
+            if (form3.ShowDialog(this) == DialogResult.OK)
+            {
+                var paper = pnl1.CreateGraphics();
+                var pen = new Pen(Color.Black, 5);
+                paper.DrawLine(pen, 15, 6,10,15);
+            }
         }
 
         private void btnTriangle_Click(object sender, EventArgs e)
