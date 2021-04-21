@@ -98,7 +98,7 @@
             this.Controls.Add(this.btnTriangle);
             this.Controls.Add(this.btnCircle);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Графический редактор";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
