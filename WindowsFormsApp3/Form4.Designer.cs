@@ -38,9 +38,9 @@
             // OK
             // 
             this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OK.Location = new System.Drawing.Point(371, 166);
+            this.OK.Location = new System.Drawing.Point(371, 131);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(75, 23);
+            this.OK.Size = new System.Drawing.Size(111, 58);
             this.OK.TabIndex = 0;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
@@ -48,22 +48,22 @@
             // 
             // X
             // 
-            this.X.Location = new System.Drawing.Point(151, 131);
+            this.X.Location = new System.Drawing.Point(136, 113);
             this.X.Name = "X";
-            this.X.Size = new System.Drawing.Size(92, 20);
+            this.X.Size = new System.Drawing.Size(119, 20);
             this.X.TabIndex = 3;
             // 
             // Y
             // 
-            this.Y.Location = new System.Drawing.Point(151, 188);
+            this.Y.Location = new System.Drawing.Point(136, 210);
             this.Y.Name = "Y";
-            this.Y.Size = new System.Drawing.Size(92, 20);
+            this.Y.Size = new System.Drawing.Size(119, 20);
             this.Y.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(168, 115);
+            this.label1.Location = new System.Drawing.Point(168, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 6;

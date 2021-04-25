@@ -54,12 +54,15 @@ namespace WindowsFormsApp3
 
         private void btnRestangle_Click(object sender, EventArgs e)
         {
+            
             form3 = new FrmRestangle();
             if (form3.ShowDialog(this) == DialogResult.OK)
             {
                 var paper = pnl1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
-                paper.DrawRectangle(pen, 150, 150, 150, 150);
+                FrmRestangle fr = new FrmRestangle();
+                TextBox X1 = fr.value;
+                paper.DrawRectangle(pen, float.Parse(X1), 150, 150, 150);
             }
         }
     }

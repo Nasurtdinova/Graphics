@@ -12,9 +12,13 @@ namespace WindowsFormsApp3
 {
     public partial class FrmRestangle : Form
     {
+        public TextBox value;
         public FrmRestangle()
         {
             InitializeComponent();
+            value = X;
         }
+
+        
     }
 }
