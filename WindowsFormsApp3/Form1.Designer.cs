@@ -64,6 +64,7 @@
             this.pnl1.Name = "pnl1";
             this.pnl1.Size = new System.Drawing.Size(669, 361);
             this.pnl1.TabIndex = 2;
+            this.pnl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl1_MouseClick);
             // 
             // btnLine
             // 

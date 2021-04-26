@@ -12,13 +12,22 @@ namespace WindowsFormsApp3
 {
     public partial class FrmRestangle : Form
     {
-        public TextBox value;
+        public float X1;
+        public float Y1;
+        public float X2;
+        public float Y2;
+
         public FrmRestangle()
         {
             InitializeComponent();
-            value = X;
+            this.X1 = X1;
+            this.Y1 = Y1;
+
         }
 
-        
+        private void X_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

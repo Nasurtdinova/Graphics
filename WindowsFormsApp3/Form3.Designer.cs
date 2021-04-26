@@ -51,7 +51,7 @@
             this.X.Name = "X";
             this.X.Size = new System.Drawing.Size(92, 20);
             this.X.TabIndex = 2;
-            //this.X.TextChanged += new System.EventHandler(this.X_TextChanged);
+            this.X.TextChanged += new System.EventHandler(this.X_TextChanged);
             // 
             // label1
             // 

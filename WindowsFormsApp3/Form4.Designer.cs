@@ -89,7 +89,7 @@
             this.Controls.Add(this.X);
             this.Controls.Add(this.OK);
             this.Name = "FrmLine";
-            this.Text = "Form4";
+            this.Text = "Triangle";
             this.ResumeLayout(false);
             this.PerformLayout();
 

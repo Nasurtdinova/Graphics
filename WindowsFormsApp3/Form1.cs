@@ -49,21 +49,37 @@ namespace WindowsFormsApp3
 
         private void btnTriangle_Click(object sender, EventArgs e)
         {
-
+            form4 = new FrmLine();
+            if (form4.ShowDialog(this) == DialogResult.OK)
+            {
+                var paper = pnl1.CreateGraphics();
+                var paper1 = pnl1.CreateGraphics();
+                var paper2 = pnl1.CreateGraphics();
+                var pen = new Pen(Color.Black, 5);
+                paper.DrawLine(pen, 15, 6,10,15);
+                paper1.DrawLine(pen, 16, 5, 16, 25);
+                paper2.DrawLine(pen, 15, 4, 13, 12);
+            }
         }
 
         private void btnRestangle_Click(object sender, EventArgs e)
         {
-            
             form3 = new FrmRestangle();
             if (form3.ShowDialog(this) == DialogResult.OK)
             {
                 var paper = pnl1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
                 FrmRestangle fr = new FrmRestangle();
-                TextBox X1 = fr.value;
-                paper.DrawRectangle(pen, float.Parse(X1), 150, 150, 150);
+                float X1 = fr.X1;
+                paper.DrawRectangle(pen, X1, 150, 150, 150);
             }
+        }
+
+        private void pnl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var paper = pnl1.CreateGraphics();
+            var pen = new Pen(Color.Black, 5);
+            paper.DrawEllipse(pen, e.X, e.Y, 50, 50);
         }
     }
 }
