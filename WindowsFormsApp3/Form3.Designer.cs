@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.OK = new System.Windows.Forms.Button();
-            this.X = new System.Windows.Forms.TextBox();
+            this.x1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Y = new System.Windows.Forms.TextBox();
+            this.y1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.width1 = new System.Windows.Forms.TextBox();
+            this.height1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // OK
@@ -44,14 +46,14 @@
             this.OK.TabIndex = 0;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
+            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
-            // X
+            // x1
             // 
-            this.X.Location = new System.Drawing.Point(160, 100);
-            this.X.Name = "X";
-            this.X.Size = new System.Drawing.Size(92, 20);
-            this.X.TabIndex = 2;
-            this.X.TextChanged += new System.EventHandler(this.X_TextChanged);
+            this.x1.Location = new System.Drawing.Point(160, 100);
+            this.x1.Name = "x1";
+            this.x1.Size = new System.Drawing.Size(92, 20);
+            this.x1.TabIndex = 2;
             // 
             // label1
             // 
@@ -62,31 +64,47 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Введите X";
             // 
-            // Y
+            // y1
             // 
-            this.Y.Location = new System.Drawing.Point(160, 184);
-            this.Y.Name = "Y";
-            this.Y.Size = new System.Drawing.Size(92, 20);
-            this.Y.TabIndex = 4;
+            this.y1.Location = new System.Drawing.Point(292, 100);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(92, 20);
+            this.y1.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(177, 168);
+            this.label2.Location = new System.Drawing.Point(308, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Введите Y";
+            // 
+            // width1
+            // 
+            this.width1.Location = new System.Drawing.Point(160, 142);
+            this.width1.Name = "width1";
+            this.width1.Size = new System.Drawing.Size(100, 20);
+            this.width1.TabIndex = 6;
+            // 
+            // height1
+            // 
+            this.height1.Location = new System.Drawing.Point(292, 142);
+            this.height1.Name = "height1";
+            this.height1.Size = new System.Drawing.Size(92, 20);
+            this.height1.TabIndex = 9;
             // 
             // FrmRestangle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.height1);
+            this.Controls.Add(this.width1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Y);
+            this.Controls.Add(this.y1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.X);
+            this.Controls.Add(this.x1);
             this.Controls.Add(this.OK);
             this.Name = "FrmRestangle";
             this.Text = "Restangle";
@@ -98,9 +116,11 @@
         #endregion
 
         private System.Windows.Forms.Button OK;
-        private System.Windows.Forms.TextBox X;
+        private System.Windows.Forms.TextBox x1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Y;
+        private System.Windows.Forms.TextBox y1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox width1;
+        private System.Windows.Forms.TextBox height1;
     }
 }

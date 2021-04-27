@@ -70,8 +70,9 @@ namespace WindowsFormsApp3
                 var paper = pnl1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
                 FrmRestangle fr = new FrmRestangle();
-                float X1 = fr.X1;
-                paper.DrawRectangle(pen, X1, 150, 150, 150);
+                //int heignt = (int)Math.Sqrt((fr.X_2 - fr.X_1) * (fr.X_2 - fr.X_1) + (fr.Y_2 - fr.Y_1) * (fr.Y_2 - fr.Y_1));
+                //int width = (int)Math.Sqrt((fr.X_4 - fr.X_1) * (fr.X_4 - fr.X_1) + (fr.Y_4 - fr.Y_1) * (fr.Y_4 - fr.Y_1));
+                paper.DrawRectangle(pen, fr.X_1, fr.Y_1,fr.width,fr.height);
             }
         }
 
