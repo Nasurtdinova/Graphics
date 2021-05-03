@@ -12,18 +12,76 @@ namespace WindowsFormsApp3
 {
     public partial class Form1 : Form
     {
+        private List<FigureData> figureData;
+
         private Form form2;
         private Form form3;
         private Form form4;
         public Form1()
         {
             InitializeComponent();
+            figureData = new List<FigureData>();
+            figureData.Add(new FigureData
+            {
+                Name = "Circle",
+                Data = new Dictionary<string, int>
+                {
+                    {"X", 0 },
+                    {"Y", 0 },
+                    {"R", 0 }
+                }
+            });
+            figureData.Add(new FigureData
+            {
+                Name = "Line",
+                Data = new Dictionary<string, int>
+                {
+                    {"X", 0 },
+                    {"Y", 0 }
+                }
+            });
+            figureData.Add(new FigureData
+            {
+                Name = "Restangle",
+                Data = new Dictionary<string, int>
+                {
+                    {"X", 0 },
+                    {"Y", 0 },
+                    {"Width", 0 },
+                    {"Heightt", 0}
+                }
+            });
+            figureData.Add(new FigureData
+            {
+                Name = "Triangle",
+                Data = new Dictionary<string, int>
+                {
+                    {"X", 0 },
+                    {"Y", 0 },
+                    {"X2", 0 },
+                    {"Y2", 0 },
+                    {"X3", 0 },
+                    {"Y3", 0 }
+                }
+            });
+            lbFigures.DataSource = figureData;
+
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public class FigureData
         {
+            public string Name;
+            public Dictionary<string, int> Data;
+            public override string ToString()
+            {
+                return Name;
+            }
+
 
         }
+
+      
 
         private void btnCircle_Click(object sender, EventArgs e)
         {
@@ -81,6 +139,68 @@ namespace WindowsFormsApp3
             var paper = pnl1.CreateGraphics();
             var pen = new Pen(Color.Black, 5);
             paper.DrawEllipse(pen, e.X, e.Y, 50, 50);
+        }
+
+        private void lbFigures_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var fig = (lbFigures.SelectedItem as FigureData);
+            dgvFigData.Rows.Clear();
+
+            foreach(var v in fig.Data)
+            {
+                dgvFigData.Rows.Add(v.Key, v.Value);
+
+            }
+        }
+
+        private void dgvFigData_Leave(object sender, EventArgs e)
+        {
+            var fig = (lbFigures.SelectedItem as FigureData);
+            foreach (DataGridViewRow row in dgvFigData.Rows)
+            {
+                var key = row.Cells[0].Value.ToString();
+                var val = row.Cells[1].Value.ToString();
+                try
+                {
+                    fig.Data[key] = int.Parse(val);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLineColour_Click(object sender, EventArgs e)
+        {
+            if (digSetColour.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void dgvFigData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string s = (string)dgvFigData.Rows[e.RowIndex].Cells[1].Value;
+        }
+
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                int width = Convert.ToInt32(pnl1.Width);
+                int height = Convert.ToInt32(pnl1.Height);
+                Bitmap bmp = new Bitmap(width, height);
+                pnl1.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
+                bmp.Save(dialog.FileName);
+            }
         }
     }
 }
