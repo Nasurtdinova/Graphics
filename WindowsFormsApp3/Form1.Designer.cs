@@ -30,8 +30,6 @@
         {
             this.btnCircle = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
-            this.pnl1 = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnLineColour = new System.Windows.Forms.Button();
             this.lbLineColour = new System.Windows.Forms.Label();
             this.lbLineWidth = new System.Windows.Forms.Label();
@@ -44,11 +42,18 @@
             this.btnRestangle = new System.Windows.Forms.Button();
             this.pnl4 = new System.Windows.Forms.Panel();
             this.digSetColour = new System.Windows.Forms.ColorDialog();
-            this.btnDownload = new System.Windows.Forms.Button();
-            this.pnl1.SuspendLayout();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFigData)).BeginInit();
             this.pnl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCircle
@@ -73,36 +78,10 @@
             this.btnTriangle.UseVisualStyleBackColor = false;
             this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
             // 
-            // pnl1
-            // 
-            this.pnl1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pnl1.Controls.Add(this.btnDownload);
-            this.pnl1.Controls.Add(this.btnSave);
-            this.pnl1.Controls.Add(this.btnLineColour);
-            this.pnl1.Controls.Add(this.lbLineColour);
-            this.pnl1.Controls.Add(this.lbLineWidth);
-            this.pnl1.Controls.Add(this.edLineWidth);
-            this.pnl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl1.Location = new System.Drawing.Point(0, 89);
-            this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(813, 361);
-            this.pnl1.TabIndex = 2;
-            this.pnl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl1_MouseClick);
-            // 
-            // btnSave
-            // 
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(246, 326);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // btnLineColour
             // 
             this.btnLineColour.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLineColour.Location = new System.Drawing.Point(564, 212);
+            this.btnLineColour.Location = new System.Drawing.Point(476, 127);
             this.btnLineColour.Name = "btnLineColour";
             this.btnLineColour.Size = new System.Drawing.Size(75, 23);
             this.btnLineColour.TabIndex = 5;
@@ -112,17 +91,17 @@
             // lbLineColour
             // 
             this.lbLineColour.AutoSize = true;
-            this.lbLineColour.Location = new System.Drawing.Point(464, 212);
+            this.lbLineColour.Location = new System.Drawing.Point(369, 136);
             this.lbLineColour.Name = "lbLineColour";
             this.lbLineColour.Size = new System.Drawing.Size(60, 13);
             this.lbLineColour.TabIndex = 4;
             this.lbLineColour.Text = "Line Colour";
-            this.lbLineColour.Click += new System.EventHandler(this.label1_Click);
+            this.lbLineColour.Click += new System.EventHandler(this.lbLineColour_Click);
             // 
             // lbLineWidth
             // 
             this.lbLineWidth.AutoSize = true;
-            this.lbLineWidth.Location = new System.Drawing.Point(464, 189);
+            this.lbLineWidth.Location = new System.Drawing.Point(141, 136);
             this.lbLineWidth.Name = "lbLineWidth";
             this.lbLineWidth.Size = new System.Drawing.Size(58, 13);
             this.lbLineWidth.TabIndex = 3;
@@ -130,7 +109,7 @@
             // 
             // edLineWidth
             // 
-            this.edLineWidth.Location = new System.Drawing.Point(551, 187);
+            this.edLineWidth.Location = new System.Drawing.Point(232, 130);
             this.edLineWidth.Name = "edLineWidth";
             this.edLineWidth.Size = new System.Drawing.Size(120, 20);
             this.edLineWidth.TabIndex = 2;
@@ -198,35 +177,84 @@
             this.pnl4.Controls.Add(this.dgvFigData);
             this.pnl4.Controls.Add(this.lbFigures);
             this.pnl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl4.Location = new System.Drawing.Point(0, 0);
+            this.pnl4.Location = new System.Drawing.Point(0, 24);
             this.pnl4.Name = "pnl4";
             this.pnl4.Size = new System.Drawing.Size(813, 100);
             this.pnl4.TabIndex = 3;
             // 
-            // btnDownload
+            // saveFileDialog1
             // 
-            this.btnDownload.Location = new System.Drawing.Point(419, 326);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(75, 23);
-            this.btnDownload.TabIndex = 7;
-            this.btnDownload.Text = "Download";
-            this.btnDownload.UseVisualStyleBackColor = true;
+            this.saveFileDialog1.DefaultExt = "jpg";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 162);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(813, 288);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(813, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.openToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnl4);
-            this.Controls.Add(this.pnl1);
+            this.Controls.Add(this.edLineWidth);
+            this.Controls.Add(this.lbLineWidth);
+            this.Controls.Add(this.btnLineColour);
+            this.Controls.Add(this.lbLineColour);
+            this.Controls.Add(this.menuStrip1);
             this.Name = "Form1";
             this.Text = "Графический редактор";
-            this.pnl1.ResumeLayout(false);
-            this.pnl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFigData)).EndInit();
             this.pnl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -234,7 +262,6 @@
 
         private System.Windows.Forms.Button btnCircle;
         private System.Windows.Forms.Button btnTriangle;
-        private System.Windows.Forms.Panel pnl1;
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnRestangle;
         private System.Windows.Forms.Panel pnl4;
@@ -247,8 +274,13 @@
         private System.Windows.Forms.ColorDialog digSetColour;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
     }
 }
 

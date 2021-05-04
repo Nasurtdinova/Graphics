@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.EventArgs;
 
 namespace WindowsFormsApp3
 {
     public partial class Form1 : Form
     {
         private List<FigureData> figureData;
-
+        Bitmap pic;
         private Form form2;
         private Form form3;
         private Form form4;
         public Form1()
         {
             InitializeComponent();
+            pic = new Bitmap(1000, 1000);
             figureData = new List<FigureData>();
             figureData.Add(new FigureData
             {
@@ -88,7 +90,7 @@ namespace WindowsFormsApp3
             form2 = new FrmCircle();
             if (form2.ShowDialog(this) == DialogResult.OK)
             {
-                var paper = pnl1.CreateGraphics();
+                var paper = pictureBox1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
                 paper.DrawEllipse(pen, 150,150,150,150);
             }
@@ -99,9 +101,9 @@ namespace WindowsFormsApp3
             form3 = new FrmLine();
             if (form3.ShowDialog(this) == DialogResult.OK)
             {
-                var paper = pnl1.CreateGraphics();
+                var paper = pictureBox1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
-                paper.DrawLine(pen, 15, 6,10,15);
+                paper.DrawLine(pen, 150, 160,100,150);
             }
         }
 
@@ -110,9 +112,9 @@ namespace WindowsFormsApp3
             form4 = new FrmLine();
             if (form4.ShowDialog(this) == DialogResult.OK)
             {
-                var paper = pnl1.CreateGraphics();
-                var paper1 = pnl1.CreateGraphics();
-                var paper2 = pnl1.CreateGraphics();
+                var paper = pictureBox1.CreateGraphics();
+                var paper1 = pictureBox1.CreateGraphics();
+                var paper2 = pictureBox1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
                 paper.DrawLine(pen, 15, 6,10,15);
                 paper1.DrawLine(pen, 16, 5, 16, 25);
@@ -125,20 +127,13 @@ namespace WindowsFormsApp3
             form3 = new FrmRestangle();
             if (form3.ShowDialog(this) == DialogResult.OK)
             {
-                var paper = pnl1.CreateGraphics();
+                var paper = pictureBox1.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
                 FrmRestangle fr = new FrmRestangle();
                 //int heignt = (int)Math.Sqrt((fr.X_2 - fr.X_1) * (fr.X_2 - fr.X_1) + (fr.Y_2 - fr.Y_1) * (fr.Y_2 - fr.Y_1));
                 //int width = (int)Math.Sqrt((fr.X_4 - fr.X_1) * (fr.X_4 - fr.X_1) + (fr.Y_4 - fr.Y_1) * (fr.Y_4 - fr.Y_1));
                 paper.DrawRectangle(pen, fr.X_1, fr.Y_1,fr.width,fr.height);
             }
-        }
-
-        private void pnl1_MouseClick(object sender, MouseEventArgs e)
-        {
-            var paper = pnl1.CreateGraphics();
-            var pen = new Pen(Color.Black, 5);
-            paper.DrawEllipse(pen, e.X, e.Y, 50, 50);
         }
 
         private void lbFigures_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,10 +166,7 @@ namespace WindowsFormsApp3
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btnLineColour_Click(object sender, EventArgs e)
         {
@@ -189,17 +181,32 @@ namespace WindowsFormsApp3
             string s = (string)dgvFigData.Rows[e.RowIndex].Cells[1].Value;
         }
 
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            var paper = pictureBox1.CreateGraphics();
+            var pen = new Pen(Color.Black, 5);
+            paper.DrawEllipse(pen, 10, 50, 50, 50);
+        }
+
+        private void lbLineColour_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName != "")
+                pic.Save(saveFileDialog1.FileName);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "")
             {
-                int width = Convert.ToInt32(pnl1.Width);
-                int height = Convert.ToInt32(pnl1.Height);
-                Bitmap bmp = new Bitmap(width, height);
-                pnl1.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
-                bmp.Save(dialog.FileName);
+                pic = (Bitmap)Image.FromFile(openFileDialog1.FileName);
+                pictureBox1.Image = pic;
             }
         }
     }
