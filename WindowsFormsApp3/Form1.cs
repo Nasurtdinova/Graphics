@@ -7,104 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.EventArgs;
 
 namespace WindowsFormsApp3
 {
     public partial class Form1 : Form
     {
-        private List<FigureData> figureData;
+        private Graphics mypaint;
+        private bool gambar = false;
+        private int curX, curY, x, y, diffX, diffY;
+
+        private double diffXY;
+
+        private int mshape;
+        private Color mcolor;
+        private float mwidth;
+
         Bitmap pic;
+
         private Form form2;
         private Form form3;
         private Form form4;
         public Form1()
         {
             InitializeComponent();
+
+            edLineWidth.Value = 1;
+            mcolor = Color.Black;
+
             pic = new Bitmap(1000, 1000);
-            figureData = new List<FigureData>();
-            figureData.Add(new FigureData
-            {
-                Name = "Circle",
-                Data = new Dictionary<string, int>
-                {
-                    {"X", 0 },
-                    {"Y", 0 },
-                    {"R", 0 }
-                }
-            });
-            figureData.Add(new FigureData
-            {
-                Name = "Line",
-                Data = new Dictionary<string, int>
-                {
-                    {"X", 0 },
-                    {"Y", 0 }
-                }
-            });
-            figureData.Add(new FigureData
-            {
-                Name = "Restangle",
-                Data = new Dictionary<string, int>
-                {
-                    {"X", 0 },
-                    {"Y", 0 },
-                    {"Width", 0 },
-                    {"Heightt", 0}
-                }
-            });
-            figureData.Add(new FigureData
-            {
-                Name = "Triangle",
-                Data = new Dictionary<string, int>
-                {
-                    {"X", 0 },
-                    {"Y", 0 },
-                    {"X2", 0 },
-                    {"Y2", 0 },
-                    {"X3", 0 },
-                    {"Y3", 0 }
-                }
-            });
-            lbFigures.DataSource = figureData;
-
-
+           
         }
-
-        public class FigureData
-        {
-            public string Name;
-            public Dictionary<string, int> Data;
-            public override string ToString()
-            {
-                return Name;
-            }
-
-
-        }
-
-      
 
         private void btnCircle_Click(object sender, EventArgs e)
         {
-            form2 = new FrmCircle();
-            if (form2.ShowDialog(this) == DialogResult.OK)
-            {
-                var paper = pictureBox1.CreateGraphics();
-                var pen = new Pen(Color.Black, 5);
-                paper.DrawEllipse(pen, 150,150,150,150);
-            }
+            mshape = 2;
         }
 
         private void btnLine_Click(object sender, EventArgs e)
         {
-            form3 = new FrmLine();
-            if (form3.ShowDialog(this) == DialogResult.OK)
-            {
-                var paper = pictureBox1.CreateGraphics();
-                var pen = new Pen(Color.Black, 5);
-                paper.DrawLine(pen, 150, 160,100,150);
-            }
+            mshape = 0;
         }
 
         private void btnTriangle_Click(object sender, EventArgs e)
@@ -124,73 +65,7 @@ namespace WindowsFormsApp3
 
         private void btnRestangle_Click(object sender, EventArgs e)
         {
-            form3 = new FrmRestangle();
-            if (form3.ShowDialog(this) == DialogResult.OK)
-            {
-                var paper = pictureBox1.CreateGraphics();
-                var pen = new Pen(Color.Black, 5);
-                FrmRestangle fr = new FrmRestangle();
-                //int heignt = (int)Math.Sqrt((fr.X_2 - fr.X_1) * (fr.X_2 - fr.X_1) + (fr.Y_2 - fr.Y_1) * (fr.Y_2 - fr.Y_1));
-                //int width = (int)Math.Sqrt((fr.X_4 - fr.X_1) * (fr.X_4 - fr.X_1) + (fr.Y_4 - fr.Y_1) * (fr.Y_4 - fr.Y_1));
-                paper.DrawRectangle(pen, fr.X_1, fr.Y_1,fr.width,fr.height);
-            }
-        }
-
-        private void lbFigures_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var fig = (lbFigures.SelectedItem as FigureData);
-            dgvFigData.Rows.Clear();
-
-            foreach(var v in fig.Data)
-            {
-                dgvFigData.Rows.Add(v.Key, v.Value);
-
-            }
-        }
-
-        private void dgvFigData_Leave(object sender, EventArgs e)
-        {
-            var fig = (lbFigures.SelectedItem as FigureData);
-            foreach (DataGridViewRow row in dgvFigData.Rows)
-            {
-                var key = row.Cells[0].Value.ToString();
-                var val = row.Cells[1].Value.ToString();
-                try
-                {
-                    fig.Data[key] = int.Parse(val);
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-        }
-
-      
-
-        private void btnLineColour_Click(object sender, EventArgs e)
-        {
-            if (digSetColour.ShowDialog(this) == DialogResult.OK)
-            {
-
-            }
-        }
-
-        private void dgvFigData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string s = (string)dgvFigData.Rows[e.RowIndex].Cells[1].Value;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            var paper = pictureBox1.CreateGraphics();
-            var pen = new Pen(Color.Black, 5);
-            paper.DrawEllipse(pen, 10, 50, 50, 50);
-        }
-
-        private void lbLineColour_Click(object sender, EventArgs e)
-        {
-
+              mshape = 1;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,6 +83,82 @@ namespace WindowsFormsApp3
                 pic = (Bitmap)Image.FromFile(openFileDialog1.FileName);
                 pictureBox1.Image = pic;
             }
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                gambar = true;
+            }
+            curX = e.X;
+            curY = e.Y;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            textBox1.Text = Convert.ToString(diffX);
+            textBox2.Text = Convert.ToString(diffY);
+            diffXY = Math.Sqrt((diffX * diffX) + (diffY * diffY));
+            textBox3.Text = Convert.ToString(diffXY);
+        }
+
+        private void btnClear_Click_1(object sender, EventArgs e)
+        {
+            this.Refresh();
+            textBox1.Text = "0";
+            textBox2.Text = "0";
+            textBox3.Text = "0";
+            curX = 0;
+            curY = 0;
+            x = 0;
+            y = 0;
+            diffX = 0;
+            diffY = 0;
+            edLineWidth.Value = 0;
+        }
+
+        private void btnColor_Click_1(object sender, EventArgs e)
+        {
+            ColorDialog dig = new ColorDialog();
+            dig.Color = mcolor;
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                mcolor = dig.Color;
+            }
+        }
+
+        private void edLineWidth_ValueChanged(object sender, EventArgs e)
+        {
+            mwidth = (int)edLineWidth.Value;
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Pen p = new Pen(mcolor, mwidth);
+            x = e.X;
+            y = e.Y;
+            diffX = e.X - curX;
+            diffY = e.Y - curY;
+            switch (mshape)
+            {
+                case 0:
+                    mypaint.DrawLine(p, curX, curY, e.X, e.Y);
+                    break;
+                case 1:
+                    mypaint.DrawRectangle(p, curX, curY, diffX, diffY);
+                    break;
+                case 2:
+                    mypaint.DrawEllipse(p, curX, curY, diffX, diffY);
+                    break;
+                    //case 3:
+                    //    mypaint.
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            mypaint = pictureBox1.CreateGraphics();
         }
     }
 }

@@ -30,17 +30,23 @@
         {
             this.btnCircle = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
-            this.btnLineColour = new System.Windows.Forms.Button();
-            this.lbLineColour = new System.Windows.Forms.Label();
             this.lbLineWidth = new System.Windows.Forms.Label();
             this.edLineWidth = new System.Windows.Forms.NumericUpDown();
-            this.dgvFigData = new System.Windows.Forms.DataGridView();
-            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbFigures = new System.Windows.Forms.ListBox();
             this.btnLine = new System.Windows.Forms.Button();
             this.btnRestangle = new System.Windows.Forms.Button();
             this.pnl4 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnColor = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.digSetColour = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -50,8 +56,10 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFigData)).BeginInit();
             this.pnl4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,9 +67,9 @@
             // btnCircle
             // 
             this.btnCircle.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnCircle.Location = new System.Drawing.Point(3, 24);
+            this.btnCircle.Location = new System.Drawing.Point(6, 32);
             this.btnCircle.Name = "btnCircle";
-            this.btnCircle.Size = new System.Drawing.Size(102, 36);
+            this.btnCircle.Size = new System.Drawing.Size(54, 36);
             this.btnCircle.TabIndex = 0;
             this.btnCircle.Text = "Circle";
             this.btnCircle.UseVisualStyleBackColor = false;
@@ -70,38 +78,18 @@
             // btnTriangle
             // 
             this.btnTriangle.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnTriangle.Location = new System.Drawing.Point(327, 24);
+            this.btnTriangle.Location = new System.Drawing.Point(214, 32);
             this.btnTriangle.Name = "btnTriangle";
-            this.btnTriangle.Size = new System.Drawing.Size(102, 36);
+            this.btnTriangle.Size = new System.Drawing.Size(71, 36);
             this.btnTriangle.TabIndex = 1;
             this.btnTriangle.Text = "Triangle";
             this.btnTriangle.UseVisualStyleBackColor = false;
             this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
             // 
-            // btnLineColour
-            // 
-            this.btnLineColour.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLineColour.Location = new System.Drawing.Point(476, 127);
-            this.btnLineColour.Name = "btnLineColour";
-            this.btnLineColour.Size = new System.Drawing.Size(75, 23);
-            this.btnLineColour.TabIndex = 5;
-            this.btnLineColour.UseVisualStyleBackColor = true;
-            this.btnLineColour.Click += new System.EventHandler(this.btnLineColour_Click);
-            // 
-            // lbLineColour
-            // 
-            this.lbLineColour.AutoSize = true;
-            this.lbLineColour.Location = new System.Drawing.Point(369, 136);
-            this.lbLineColour.Name = "lbLineColour";
-            this.lbLineColour.Size = new System.Drawing.Size(60, 13);
-            this.lbLineColour.TabIndex = 4;
-            this.lbLineColour.Text = "Line Colour";
-            this.lbLineColour.Click += new System.EventHandler(this.lbLineColour_Click);
-            // 
             // lbLineWidth
             // 
             this.lbLineWidth.AutoSize = true;
-            this.lbLineWidth.Location = new System.Drawing.Point(141, 136);
+            this.lbLineWidth.Location = new System.Drawing.Point(114, 32);
             this.lbLineWidth.Name = "lbLineWidth";
             this.lbLineWidth.Size = new System.Drawing.Size(58, 13);
             this.lbLineWidth.TabIndex = 3;
@@ -109,49 +97,18 @@
             // 
             // edLineWidth
             // 
-            this.edLineWidth.Location = new System.Drawing.Point(232, 130);
+            this.edLineWidth.Location = new System.Drawing.Point(117, 60);
             this.edLineWidth.Name = "edLineWidth";
-            this.edLineWidth.Size = new System.Drawing.Size(120, 20);
+            this.edLineWidth.Size = new System.Drawing.Size(69, 20);
             this.edLineWidth.TabIndex = 2;
-            // 
-            // dgvFigData
-            // 
-            this.dgvFigData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFigData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Key,
-            this.Value});
-            this.dgvFigData.Location = new System.Drawing.Point(445, 12);
-            this.dgvFigData.Name = "dgvFigData";
-            this.dgvFigData.Size = new System.Drawing.Size(241, 150);
-            this.dgvFigData.TabIndex = 1;
-            this.dgvFigData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFigData_CellContentClick);
-            this.dgvFigData.Leave += new System.EventHandler(this.dgvFigData_Leave);
-            // 
-            // Key
-            // 
-            this.Key.HeaderText = "Key";
-            this.Key.Name = "Key";
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            // 
-            // lbFigures
-            // 
-            this.lbFigures.FormattingEnabled = true;
-            this.lbFigures.Location = new System.Drawing.Point(692, 12);
-            this.lbFigures.Name = "lbFigures";
-            this.lbFigures.Size = new System.Drawing.Size(88, 95);
-            this.lbFigures.TabIndex = 0;
-            this.lbFigures.SelectedIndexChanged += new System.EventHandler(this.lbFigures_SelectedIndexChanged);
+            this.edLineWidth.ValueChanged += new System.EventHandler(this.edLineWidth_ValueChanged);
             // 
             // btnLine
             // 
             this.btnLine.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnLine.Location = new System.Drawing.Point(219, 24);
+            this.btnLine.Location = new System.Drawing.Point(144, 32);
             this.btnLine.Name = "btnLine";
-            this.btnLine.Size = new System.Drawing.Size(102, 34);
+            this.btnLine.Size = new System.Drawing.Size(64, 36);
             this.btnLine.TabIndex = 3;
             this.btnLine.Text = "Line";
             this.btnLine.UseVisualStyleBackColor = false;
@@ -160,9 +117,9 @@
             // btnRestangle
             // 
             this.btnRestangle.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnRestangle.Location = new System.Drawing.Point(111, 24);
+            this.btnRestangle.Location = new System.Drawing.Point(66, 32);
             this.btnRestangle.Name = "btnRestangle";
-            this.btnRestangle.Size = new System.Drawing.Size(102, 36);
+            this.btnRestangle.Size = new System.Drawing.Size(72, 36);
             this.btnRestangle.TabIndex = 4;
             this.btnRestangle.Text = "Restangle";
             this.btnRestangle.UseVisualStyleBackColor = false;
@@ -170,17 +127,134 @@
             // 
             // pnl4
             // 
-            this.pnl4.Controls.Add(this.btnCircle);
-            this.pnl4.Controls.Add(this.btnRestangle);
-            this.pnl4.Controls.Add(this.btnTriangle);
-            this.pnl4.Controls.Add(this.btnLine);
-            this.pnl4.Controls.Add(this.dgvFigData);
-            this.pnl4.Controls.Add(this.lbFigures);
+            this.pnl4.Controls.Add(this.groupBox3);
+            this.pnl4.Controls.Add(this.groupBox2);
+            this.pnl4.Controls.Add(this.groupBox1);
             this.pnl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl4.Location = new System.Drawing.Point(0, 24);
             this.pnl4.Name = "pnl4";
-            this.pnl4.Size = new System.Drawing.Size(813, 100);
+            this.pnl4.Size = new System.Drawing.Size(717, 145);
             this.pnl4.TabIndex = 3;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnOk);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Location = new System.Drawing.Point(518, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(187, 129);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Coordinate";
+            // 
+            // btnOk
+            // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.Location = new System.Drawing.Point(63, 106);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 7;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(73, 71);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(73, 45);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(73, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Leingth";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Y";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "X";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnClear);
+            this.groupBox2.Controls.Add(this.btnColor);
+            this.groupBox2.Controls.Add(this.lbLineWidth);
+            this.groupBox2.Controls.Add(this.edLineWidth);
+            this.groupBox2.Location = new System.Drawing.Point(309, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(199, 94);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Option";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(7, 56);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(86, 38);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click_1);
+            // 
+            // btnColor
+            // 
+            this.btnColor.Location = new System.Drawing.Point(7, 19);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(86, 37);
+            this.btnColor.TabIndex = 4;
+            this.btnColor.Text = "Color";
+            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click_1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnCircle);
+            this.groupBox1.Controls.Add(this.btnRestangle);
+            this.groupBox1.Controls.Add(this.btnLine);
+            this.groupBox1.Controls.Add(this.btnTriangle);
+            this.groupBox1.Location = new System.Drawing.Point(12, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(291, 100);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Shape";
             // 
             // saveFileDialog1
             // 
@@ -195,10 +269,12 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox1.Location = new System.Drawing.Point(0, 162);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(813, 288);
+            this.pictureBox1.Size = new System.Drawing.Size(717, 288);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
             // menuStrip1
             // 
@@ -206,7 +282,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(813, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(717, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -222,14 +298,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -237,19 +313,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 450);
+            this.ClientSize = new System.Drawing.Size(717, 450);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnl4);
-            this.Controls.Add(this.edLineWidth);
-            this.Controls.Add(this.lbLineWidth);
-            this.Controls.Add(this.btnLineColour);
-            this.Controls.Add(this.lbLineColour);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Form1";
             this.Text = "Графический редактор";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFigData)).EndInit();
             this.pnl4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -265,15 +342,9 @@
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnRestangle;
         private System.Windows.Forms.Panel pnl4;
-        private System.Windows.Forms.ListBox lbFigures;
-        private System.Windows.Forms.DataGridView dgvFigData;
-        private System.Windows.Forms.Label lbLineColour;
         private System.Windows.Forms.Label lbLineWidth;
         private System.Windows.Forms.NumericUpDown edLineWidth;
-        private System.Windows.Forms.Button btnLineColour;
         private System.Windows.Forms.ColorDialog digSetColour;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Key;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -281,6 +352,18 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnColor;
     }
 }
 
