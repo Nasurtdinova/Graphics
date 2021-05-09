@@ -258,7 +258,7 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.DefaultExt = "jpg";
+            this.saveFileDialog1.DefaultExt = "png";
             // 
             // openFileDialog1
             // 
@@ -266,10 +266,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 162);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 169);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(717, 288);
+            this.pictureBox1.Size = new System.Drawing.Size(717, 281);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);

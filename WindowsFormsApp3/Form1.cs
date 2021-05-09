@@ -12,6 +12,8 @@ namespace WindowsFormsApp3
 {
     public partial class Form1 : Form
     {
+        private Bitmap draw;
+        private Graphics paper;
         private Graphics mypaint;
         private bool gambar = false;
         private int curX, curY, x, y, diffX, diffY;
@@ -33,7 +35,7 @@ namespace WindowsFormsApp3
 
             edLineWidth.Value = 1;
             mcolor = Color.Black;
-
+            mshape = 1;
             pic = new Bitmap(1000, 1000);
            
         }
@@ -73,6 +75,10 @@ namespace WindowsFormsApp3
             saveFileDialog1.ShowDialog();
             if (saveFileDialog1.FileName != "")
                 pic.Save(saveFileDialog1.FileName);
+            //if (saveFileDialog1.ShowDialog()== DialogResult.OK && saveFileDialog1.FileName != null)
+            //{
+            //    pic.Save($"{saveFileDialog1.FileName}");
+            //}
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,6 +109,7 @@ namespace WindowsFormsApp3
             textBox3.Text = Convert.ToString(diffXY);
         }
 
+       
         private void btnClear_Click_1(object sender, EventArgs e)
         {
             this.Refresh();
