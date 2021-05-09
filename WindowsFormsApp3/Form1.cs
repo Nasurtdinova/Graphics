@@ -161,11 +161,12 @@ namespace WindowsFormsApp3
                     //case 3:
                     //    mypaint.
             }
+            pictureBox1.Image = pic;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            mypaint = pictureBox1.CreateGraphics();
+            mypaint = Graphics.FromImage(pic);
         }
     }
 }
