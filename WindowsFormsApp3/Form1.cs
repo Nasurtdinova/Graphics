@@ -55,9 +55,9 @@ namespace WindowsFormsApp3
             form4 = new FrmLine();
             if (form4.ShowDialog(this) == DialogResult.OK)
             {
-                var paper = pictureBox1.CreateGraphics();
-                var paper1 = pictureBox1.CreateGraphics();
-                var paper2 = pictureBox1.CreateGraphics();
+                var paper = pbDraw.CreateGraphics();
+                var paper1 = pbDraw.CreateGraphics();
+                var paper2 = pbDraw.CreateGraphics();
                 var pen = new Pen(Color.Black, 5);
                 paper.DrawLine(pen, 15, 6,10,15);
                 paper1.DrawLine(pen, 16, 5, 16, 25);
@@ -87,7 +87,7 @@ namespace WindowsFormsApp3
             if (openFileDialog1.FileName != "")
             {
                 pic = (Bitmap)Image.FromFile(openFileDialog1.FileName);
-                pictureBox1.Image = pic;
+                pbDraw.Image = pic;
             }
         }
 
@@ -161,7 +161,7 @@ namespace WindowsFormsApp3
                     //case 3:
                     //    mypaint.
             }
-            pictureBox1.Image = pic;
+            pbDraw.Image = pic;
         }
 
         private void Form1_Load(object sender, EventArgs e)
