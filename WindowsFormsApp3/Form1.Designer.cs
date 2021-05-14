@@ -37,19 +37,19 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbDraw = new System.Windows.Forms.PictureBox();
             this.pnl4 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.gb_coordinate = new System.Windows.Forms.GroupBox();
+            this.tb3 = new System.Windows.Forms.TextBox();
+            this.tb2 = new System.Windows.Forms.TextBox();
+            this.tb1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gb_option = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnColor = new System.Windows.Forms.Button();
             this.lbLineWidth = new System.Windows.Forms.Label();
             this.edLineWidth = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gb_shape = new System.Windows.Forms.GroupBox();
             this.btnCircle = new System.Windows.Forms.Button();
             this.btnRestangle = new System.Windows.Forms.Button();
             this.btnLine = new System.Windows.Forms.Button();
@@ -57,10 +57,10 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDraw)).BeginInit();
             this.pnl4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gb_coordinate.SuspendLayout();
+            this.gb_option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gb_shape.SuspendLayout();
             this.SuspendLayout();
             // 
             // saveFileDialog1
@@ -113,57 +113,57 @@
             this.pbDraw.Size = new System.Drawing.Size(717, 281);
             this.pbDraw.TabIndex = 9;
             this.pbDraw.TabStop = false;
-            this.pbDraw.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pbDraw.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbDraw_MouseClick);
             this.pbDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pbDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
             // pnl4
             // 
             this.pnl4.BackgroundImage = global::WindowsFormsApp3.Properties.Resources.фон;
-            this.pnl4.Controls.Add(this.groupBox3);
-            this.pnl4.Controls.Add(this.groupBox2);
-            this.pnl4.Controls.Add(this.groupBox1);
+            this.pnl4.Controls.Add(this.gb_coordinate);
+            this.pnl4.Controls.Add(this.gb_option);
+            this.pnl4.Controls.Add(this.gb_shape);
             this.pnl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl4.Location = new System.Drawing.Point(0, 24);
             this.pnl4.Name = "pnl4";
             this.pnl4.Size = new System.Drawing.Size(717, 145);
             this.pnl4.TabIndex = 3;
             // 
-            // groupBox3
+            // gb_coordinate
             // 
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(518, 19);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(187, 100);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Coordinate";
+            this.gb_coordinate.Controls.Add(this.tb3);
+            this.gb_coordinate.Controls.Add(this.tb2);
+            this.gb_coordinate.Controls.Add(this.tb1);
+            this.gb_coordinate.Controls.Add(this.label3);
+            this.gb_coordinate.Controls.Add(this.label2);
+            this.gb_coordinate.Controls.Add(this.label1);
+            this.gb_coordinate.Location = new System.Drawing.Point(518, 19);
+            this.gb_coordinate.Name = "gb_coordinate";
+            this.gb_coordinate.Size = new System.Drawing.Size(187, 100);
+            this.gb_coordinate.TabIndex = 7;
+            this.gb_coordinate.TabStop = false;
+            this.gb_coordinate.Text = "Coordinate";
             // 
-            // textBox3
+            // tb3
             // 
-            this.textBox3.Location = new System.Drawing.Point(73, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.tb3.Location = new System.Drawing.Point(73, 71);
+            this.tb3.Name = "tb3";
+            this.tb3.Size = new System.Drawing.Size(100, 20);
+            this.tb3.TabIndex = 6;
             // 
-            // textBox2
+            // tb2
             // 
-            this.textBox2.Location = new System.Drawing.Point(73, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.tb2.Location = new System.Drawing.Point(73, 45);
+            this.tb2.Name = "tb2";
+            this.tb2.Size = new System.Drawing.Size(100, 20);
+            this.tb2.TabIndex = 5;
             // 
-            // textBox1
+            // tb1
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.tb1.Location = new System.Drawing.Point(73, 16);
+            this.tb1.Name = "tb1";
+            this.tb1.Size = new System.Drawing.Size(100, 20);
+            this.tb1.TabIndex = 4;
             // 
             // label3
             // 
@@ -192,18 +192,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "X";
             // 
-            // groupBox2
+            // gb_option
             // 
-            this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.btnColor);
-            this.groupBox2.Controls.Add(this.lbLineWidth);
-            this.groupBox2.Controls.Add(this.edLineWidth);
-            this.groupBox2.Location = new System.Drawing.Point(309, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(199, 100);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Option";
+            this.gb_option.Controls.Add(this.btnClear);
+            this.gb_option.Controls.Add(this.btnColor);
+            this.gb_option.Controls.Add(this.lbLineWidth);
+            this.gb_option.Controls.Add(this.edLineWidth);
+            this.gb_option.Location = new System.Drawing.Point(309, 19);
+            this.gb_option.Name = "gb_option";
+            this.gb_option.Size = new System.Drawing.Size(199, 100);
+            this.gb_option.TabIndex = 6;
+            this.gb_option.TabStop = false;
+            this.gb_option.Text = "Option";
             // 
             // btnClear
             // 
@@ -242,19 +242,19 @@
             this.edLineWidth.TabIndex = 2;
             this.edLineWidth.ValueChanged += new System.EventHandler(this.edLineWidth_ValueChanged);
             // 
-            // groupBox1
+            // gb_shape
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.groupBox1.Controls.Add(this.btnCircle);
-            this.groupBox1.Controls.Add(this.btnRestangle);
-            this.groupBox1.Controls.Add(this.btnLine);
-            this.groupBox1.Controls.Add(this.btnTriangle);
-            this.groupBox1.Location = new System.Drawing.Point(12, 19);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(291, 100);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Shape";
+            this.gb_shape.BackColor = System.Drawing.SystemColors.Menu;
+            this.gb_shape.Controls.Add(this.btnCircle);
+            this.gb_shape.Controls.Add(this.btnRestangle);
+            this.gb_shape.Controls.Add(this.btnLine);
+            this.gb_shape.Controls.Add(this.btnTriangle);
+            this.gb_shape.Location = new System.Drawing.Point(12, 19);
+            this.gb_shape.Name = "gb_shape";
+            this.gb_shape.Size = new System.Drawing.Size(291, 100);
+            this.gb_shape.TabIndex = 5;
+            this.gb_shape.TabStop = false;
+            this.gb_shape.Text = "Shape";
             // 
             // btnCircle
             // 
@@ -315,12 +315,12 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDraw)).EndInit();
             this.pnl4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gb_coordinate.ResumeLayout(false);
+            this.gb_coordinate.PerformLayout();
+            this.gb_option.ResumeLayout(false);
+            this.gb_option.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gb_shape.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,12 +343,12 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox gb_shape;
+        private System.Windows.Forms.GroupBox gb_option;
+        private System.Windows.Forms.GroupBox gb_coordinate;
+        private System.Windows.Forms.TextBox tb3;
+        private System.Windows.Forms.TextBox tb2;
+        private System.Windows.Forms.TextBox tb1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

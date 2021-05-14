@@ -12,8 +12,7 @@ namespace WindowsFormsApp3
 {
     public partial class Form1 : Form
     {
-        private Bitmap draw;
-        private Graphics paper;
+        private Bitmap pic;
         private Graphics mypaint;
         private bool gambar = false;
         private int curX, curY, x, y, diffX, diffY;
@@ -23,8 +22,6 @@ namespace WindowsFormsApp3
         private int mshape;
         private Color mcolor;
         private float mwidth;
-
-        Bitmap pic;
 
         private Form form2;
         private Form form3;
@@ -36,8 +33,7 @@ namespace WindowsFormsApp3
             edLineWidth.Value = 1;
             mcolor = Color.Black;
             mshape = 1;
-            pic = new Bitmap(1000, 1000);
-           
+            pic = new Bitmap(pbDraw.Width, pbDraw.Height);
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
@@ -52,17 +48,18 @@ namespace WindowsFormsApp3
 
         private void btnTriangle_Click(object sender, EventArgs e)
         {
-            form4 = new FrmLine();
-            if (form4.ShowDialog(this) == DialogResult.OK)
-            {
-                var paper = pbDraw.CreateGraphics();
-                var paper1 = pbDraw.CreateGraphics();
-                var paper2 = pbDraw.CreateGraphics();
-                var pen = new Pen(Color.Black, 5);
-                paper.DrawLine(pen, 15, 6,10,15);
-                paper1.DrawLine(pen, 16, 5, 16, 25);
-                paper2.DrawLine(pen, 15, 4, 13, 12);
-            }
+            //form4 = new FrmLine();
+            //if (form4.ShowDialog(this) == DialogResult.OK)
+            //{
+            //    var paper = pbDraw.CreateGraphics();
+            //    var paper1 = pbDraw.CreateGraphics();
+            //    var paper2 = pbDraw.CreateGraphics();
+            //    var pen = new Pen(Color.Black, 5);
+            //    paper.DrawLine(pen, 15, 6,10,15);
+            //    paper1.DrawLine(pen, 16, 5, 16, 25);
+            //    paper2.DrawLine(pen, 15, 4, 13, 12);
+            //}
+            mshape = 3;
         }
 
         private void btnRestangle_Click(object sender, EventArgs e)
@@ -75,10 +72,6 @@ namespace WindowsFormsApp3
             saveFileDialog1.ShowDialog();
             if (saveFileDialog1.FileName != "")
                 pic.Save(saveFileDialog1.FileName);
-            //if (saveFileDialog1.ShowDialog()== DialogResult.OK && saveFileDialog1.FileName != null)
-            //{
-            //    pic.Save($"{saveFileDialog1.FileName}");
-            //}
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,19 +96,20 @@ namespace WindowsFormsApp3
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            textBox1.Text = Convert.ToString(diffX);
-            textBox2.Text = Convert.ToString(diffY);
+            tb1.Text = Convert.ToString(diffX);
+            tb2.Text = Convert.ToString(diffY);
             diffXY = Math.Sqrt((diffX * diffX) + (diffY * diffY));
-            textBox3.Text = Convert.ToString(diffXY);
+            tb3.Text = Convert.ToString(diffXY);
         }
 
        
         private void btnClear_Click_1(object sender, EventArgs e)
         {
+            mypaint.Clear(Color.White);
             this.Refresh();
-            textBox1.Text = "0";
-            textBox2.Text = "0";
-            textBox3.Text = "0";
+            tb1.Text = "0";
+            tb2.Text = "0";
+            tb3.Text = "0";
             curX = 0;
             curY = 0;
             x = 0;
@@ -123,6 +117,7 @@ namespace WindowsFormsApp3
             diffX = 0;
             diffY = 0;
             edLineWidth.Value = 0;
+            
         }
 
         private void btnColor_Click_1(object sender, EventArgs e)
@@ -140,13 +135,17 @@ namespace WindowsFormsApp3
             mwidth = (int)edLineWidth.Value;
         }
 
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        private void pbDraw_MouseClick(object sender, MouseEventArgs e)
         {
             Pen p = new Pen(mcolor, mwidth);
             x = e.X;
             y = e.Y;
             diffX = e.X - curX;
             diffY = e.Y - curY;
+            Point[] points = new Point[3];
+            points[0].X = x; points[0].Y = y;
+            points[1].X = curX; points[1].Y = curY;
+            points[2].X = diffX; points[2].Y = diffY;
             switch (mshape)
             {
                 case 0:
@@ -158,8 +157,9 @@ namespace WindowsFormsApp3
                 case 2:
                     mypaint.DrawEllipse(p, curX, curY, diffX, diffY);
                     break;
-                    //case 3:
-                    //    mypaint.
+                case 3:
+                    mypaint.DrawPolygon(p, points);
+                    break;
             }
             pbDraw.Image = pic;
         }
