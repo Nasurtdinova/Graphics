@@ -22,13 +22,13 @@ namespace WindowsFormsApp3
         }
     }
 
-    public class Сircle : Figure //объявляем класс окружность
+    public class Circle : Figure //объявляем класс окружность
     {
         protected int Radius;
 
-        public Сircle(int X, int Y, int radius) : base(X, Y)
+        public Сircle(int X, int Y, int newRadius) : base(X, Y)
         {
-            this.Radius = radius;
+            this.Radius = newRadius;
         }
 
         public void Draw()
@@ -39,6 +39,10 @@ namespace WindowsFormsApp3
             }
             else
                 throw (new Exception("Неправильная окружность"));
+        }
+        public override string ToString()
+        {
+            return base.ToString() + $"R = {Radius}";
         }
     }
 
@@ -66,7 +70,22 @@ namespace WindowsFormsApp3
 
     public class Rectangle : Figure //объявляем класс прямоугольник
     {
-        public Rectangle(int X, int Y) : base(X, Y) { }
+        protected int Width;
+        protected int Height;
+        public Rectangle(int X, int Y, int Width, int Height) : base(X, Y) 
+        {
+            this.Width = Width;
+            this.Height = Height;
+        }
+        public void Draw()
+        {
+
+        }
+        public override string ToString()
+        {
+            return base.ToString() + $"Height = {Height}, Width = {Width}";
+        }
+
     }
 
     public class Triangle : Figure //объявляем класс треугольник
@@ -96,6 +115,10 @@ namespace WindowsFormsApp3
             {
                 Console.WriteLine($"Стороны треугольника {AB}, {BC}, {CA}");
             }
+        }
+        public override string ToString()
+        {
+            return base.ToString() + $"X = {X}, Y = {Y}, X1 = {X1}, Y1 = {Y1}, X2 = {X2}, Y2 = {Y2}";
         }
     }
 }

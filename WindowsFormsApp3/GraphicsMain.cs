@@ -179,10 +179,16 @@ namespace WindowsFormsApp3
                 switch (figData.Name)
                 {
                     case "Line":
-                        fig = new Line(figData.Data["X1"], figData.Data["Y2"], figData.Data["X2"], figData.Data["Y2"]);
+                        fig = new Line(figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
                         break;
                     case "Circle":
                         fig = new Circle(figData.Data["X"], figData.Data["Y"], figData.Data["Radius"]);
+                        break;
+                    case "Rectangle":
+                        fig = new Rectangle(figData.Data["X"], figData.Data["Y"], figData.Data["Height"], figData.Data["Weight"]);
+                        break;
+                    case "Triangle":
+                        fig = new Triangle(figData.Data["X"], figData.Data["Y"], figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
                         break;
                 }
 
@@ -225,6 +231,20 @@ namespace WindowsFormsApp3
                     { "Y", 0 },
                     { "Height", 0 },
                     { "Weight", 0 }
+                }
+                });
+
+                figuresData.Add(new FiguresData
+                {
+                    Name = "Triangle",
+                    Data = new Dictionary<string, int>
+                {
+                    { "X", 0 },
+                    { "Y", 0 },
+                    { "X1", 0 },
+                    { "Y1", 0 },
+                    { "X2", 0 },
+                    { "Y2", 0 },
                 }
                 });
 
