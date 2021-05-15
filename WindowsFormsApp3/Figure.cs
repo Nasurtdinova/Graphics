@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Figure
+namespace WindowsFormsApp3
 {
-
     public class Figure
     {
         protected int X;
@@ -25,18 +24,18 @@ namespace Figure
 
     public class Сircle : Figure //объявляем класс окружность
     {
-        protected int radius;
+        protected int Radius;
 
         public Сircle(int X, int Y, int radius) : base(X, Y)
         {
-            this.radius = radius;
+            this.Radius = radius;
         }
 
         public void Draw()
         {
-            if (radius != 0)
+            if (Radius != 0)
             {
-                Console.WriteLine($"Радиус окружности {radius} \n Координаты: {X}, {Y}");
+                Console.WriteLine($"Радиус окружности {Radius} \n Координаты: {X}, {Y}");
             }
             else
                 throw (new Exception("Неправильная окружность"));
@@ -100,3 +99,4 @@ namespace Figure
         }
     }
 }
+

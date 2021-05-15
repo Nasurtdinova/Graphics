@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp3
 {
-    partial class Form1
+    partial class GraphicsMain
     {
         /// <summary>
         /// Обязательная переменная конструктора.

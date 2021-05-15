@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
-    public partial class Form1 : Form
+    public partial class GraphicsMain : Form
     {
         private Bitmap pic;
         private Graphics mypaint;
@@ -26,7 +26,7 @@ namespace WindowsFormsApp3
         private List<FiguresData> figuresData; 
         private List<Figure> figures;
 
-        public Form1()
+        public GraphicsMain()
         {
             InitializeComponent();
 
