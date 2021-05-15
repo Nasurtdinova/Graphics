@@ -2,20 +2,8 @@
 
 namespace Figure
 {
-    class Program
-    {
-        static void Main()
-        {
-            Сircle cir = new Сircle(1, 1, 5);
-            cir.Draw();
-            Triangle tri = new Triangle(1, 1, 5, 9, 9, 3);
-            tri.Draw();
-            Line lin = new Line(1, 1, 2, 1);
-            lin.Draw();
-        }
-    }
 
-    class Figure
+    public class Figure
     {
         protected int X;
         protected int Y;
@@ -27,7 +15,7 @@ namespace Figure
         }
     }
 
-    class Сircle : Figure //объявляем класс окружность
+    public class Сircle : Figure //объявляем класс окружность
     {
         protected int radius;
 
@@ -47,7 +35,7 @@ namespace Figure
         }
     }
 
-    class Line : Figure //объявляем класс линия
+    public class Line : Figure //объявляем класс линия
     {
         protected int X1;
         protected int Y1;
@@ -69,12 +57,12 @@ namespace Figure
         }
     }
 
-    class Rectangle : Figure //объявляем класс прямоугольник
+    public class Rectangle : Figure //объявляем класс прямоугольник
     {
         public Rectangle(int X, int Y) : base(X, Y) { }
     }
 
-    class Triangle : Figure //объявляем класс треугольник
+    public class Triangle : Figure //объявляем класс треугольник
     {
         protected int X1;
         protected int Y1;
