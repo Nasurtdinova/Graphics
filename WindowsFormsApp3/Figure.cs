@@ -26,7 +26,7 @@ namespace WindowsFormsApp3
     {
         protected int Radius;
 
-        public Сircle(int X, int Y, int newRadius) : base(X, Y)
+        public Circle(int X, int Y, int newRadius) : base(X, Y)
         {
             this.Radius = newRadius;
         }

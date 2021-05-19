@@ -37,6 +37,11 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbDraw = new System.Windows.Forms.PictureBox();
             this.pnl4 = new System.Windows.Forms.Panel();
+            this.btnDraw = new System.Windows.Forms.Button();
+            this.dgwDraw = new System.Windows.Forms.DataGridView();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbFigures = new System.Windows.Forms.ListBox();
             this.gb_coordinate = new System.Windows.Forms.GroupBox();
             this.tb3 = new System.Windows.Forms.TextBox();
             this.tb2 = new System.Windows.Forms.TextBox();
@@ -54,18 +59,14 @@
             this.btnRestangle = new System.Windows.Forms.Button();
             this.btnLine = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
-            this.lbFigures = new System.Windows.Forms.ListBox();
-            this.dgwDraw = new System.Windows.Forms.DataGridView();
-            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDraw)).BeginInit();
             this.pnl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwDraw)).BeginInit();
             this.gb_coordinate.SuspendLayout();
             this.gb_option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).BeginInit();
             this.gb_shape.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwDraw)).BeginInit();
             this.SuspendLayout();
             // 
             // saveFileDialog1
@@ -82,7 +83,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1107, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1092, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -115,16 +116,17 @@
             this.pbDraw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbDraw.Location = new System.Drawing.Point(0, 169);
             this.pbDraw.Name = "pbDraw";
-            this.pbDraw.Size = new System.Drawing.Size(1107, 281);
+            this.pbDraw.Size = new System.Drawing.Size(1092, 281);
             this.pbDraw.TabIndex = 9;
             this.pbDraw.TabStop = false;
             this.pbDraw.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbDraw_MouseClick);
-            this.pbDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pbDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pbDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbDraw_MouseDown);
+            this.pbDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbDraw_MouseMove);
             // 
             // pnl4
             // 
             this.pnl4.BackgroundImage = global::WindowsFormsApp3.Properties.Resources.фон;
+            this.pnl4.Controls.Add(this.btnDraw);
             this.pnl4.Controls.Add(this.dgwDraw);
             this.pnl4.Controls.Add(this.lbFigures);
             this.pnl4.Controls.Add(this.gb_coordinate);
@@ -133,8 +135,51 @@
             this.pnl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl4.Location = new System.Drawing.Point(0, 24);
             this.pnl4.Name = "pnl4";
-            this.pnl4.Size = new System.Drawing.Size(1107, 145);
+            this.pnl4.Size = new System.Drawing.Size(1092, 145);
             this.pnl4.TabIndex = 3;
+            // 
+            // btnDraw
+            // 
+            this.btnDraw.Location = new System.Drawing.Point(734, 116);
+            this.btnDraw.Name = "btnDraw";
+            this.btnDraw.Size = new System.Drawing.Size(69, 23);
+            this.btnDraw.TabIndex = 10;
+            this.btnDraw.Text = "Draw";
+            this.btnDraw.UseVisualStyleBackColor = true;
+            this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
+            // 
+            // dgwDraw
+            // 
+            this.dgwDraw.AllowUserToAddRows = false;
+            this.dgwDraw.AllowUserToDeleteRows = false;
+            this.dgwDraw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwDraw.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Key,
+            this.Value});
+            this.dgwDraw.Location = new System.Drawing.Point(837, 3);
+            this.dgwDraw.Name = "dgwDraw";
+            this.dgwDraw.Size = new System.Drawing.Size(242, 136);
+            this.dgwDraw.TabIndex = 9;
+            this.dgwDraw.Leave += new System.EventHandler(this.dgwDraw_Leave);
+            // 
+            // Key
+            // 
+            this.Key.HeaderText = "Key";
+            this.Key.Name = "Key";
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            // 
+            // lbFigures
+            // 
+            this.lbFigures.FormattingEnabled = true;
+            this.lbFigures.Location = new System.Drawing.Point(711, 18);
+            this.lbFigures.Name = "lbFigures";
+            this.lbFigures.Size = new System.Drawing.Size(120, 95);
+            this.lbFigures.TabIndex = 8;
+            this.lbFigures.SelectedIndexChanged += new System.EventHandler(this.lbFigures_SelectedIndexChanged);
             // 
             // gb_coordinate
             // 
@@ -307,57 +352,28 @@
             this.btnTriangle.UseVisualStyleBackColor = false;
             this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
             // 
-            // lbFigures
-            // 
-            this.lbFigures.FormattingEnabled = true;
-            this.lbFigures.Location = new System.Drawing.Point(726, 18);
-            this.lbFigures.Name = "lbFigures";
-            this.lbFigures.Size = new System.Drawing.Size(120, 95);
-            this.lbFigures.TabIndex = 8;
-            // 
-            // dgwDraw
-            // 
-            this.dgwDraw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwDraw.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Key,
-            this.Value});
-            this.dgwDraw.Location = new System.Drawing.Point(871, 3);
-            this.dgwDraw.Name = "dgwDraw";
-            this.dgwDraw.Size = new System.Drawing.Size(203, 136);
-            this.dgwDraw.TabIndex = 9;
-            // 
-            // Key
-            // 
-            this.Key.HeaderText = "Key";
-            this.Key.Name = "Key";
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            // 
-            // Form1
+            // GraphicsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 450);
+            this.ClientSize = new System.Drawing.Size(1092, 450);
             this.Controls.Add(this.pbDraw);
             this.Controls.Add(this.pnl4);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "Form1";
+            this.Name = "GraphicsMain";
             this.Text = "Графический редактор";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDraw)).EndInit();
             this.pnl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwDraw)).EndInit();
             this.gb_coordinate.ResumeLayout(false);
             this.gb_coordinate.PerformLayout();
             this.gb_option.ResumeLayout(false);
             this.gb_option.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edLineWidth)).EndInit();
             this.gb_shape.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgwDraw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,6 +411,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.ListBox lbFigures;
+        private System.Windows.Forms.Button btnDraw;
     }
 }
 

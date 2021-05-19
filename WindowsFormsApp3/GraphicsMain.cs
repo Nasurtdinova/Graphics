@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace WindowsFormsApp3
     {
         private Bitmap pic;
         private Graphics mypaint;
-        private bool gambar = false;
         private int curX, curY, x, y, diffX, diffY;
 
         private double diffXY;
@@ -36,6 +36,8 @@ namespace WindowsFormsApp3
             pic = new Bitmap(pbDraw.Width, pbDraw.Height);
 
             figures = new List<Figure>();
+            figuresData = FigureFab.InitFiguresData(); // remove
+            lbFigures.DataSource = figuresData;
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
@@ -75,17 +77,13 @@ namespace WindowsFormsApp3
             }
         }
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void pbDraw_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                gambar = true;
-            }
             curX = e.X;
             curY = e.Y;
         }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void pbDraw_MouseMove(object sender, MouseEventArgs e)
         {
             tb1.Text = Convert.ToString(diffX);
             tb2.Text = Convert.ToString(diffY);
@@ -117,6 +115,50 @@ namespace WindowsFormsApp3
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 mcolor = dig.Color;
+            }
+        }
+
+        private void dgwDraw_Leave(object sender, EventArgs e)
+        {
+            var fig = lbFigures.SelectedItem as FiguresData;
+            foreach (DataGridViewRow row in dgwDraw.Rows)
+            {
+                var key = row.Cells[0].Value.ToString();
+                var val = row.Cells[1].Value.ToString();
+                try
+                {
+                    fig.Data[key] = int.Parse(val);
+                }
+                catch (Exception)
+                { }
+            }
+        }
+
+        private void btnDraw_Click(object sender, EventArgs e)
+        {
+           
+
+            var fig = FigureFab.Make(lbFigures.SelectedItem as FiguresData);
+            if (fig != null)
+                figures.Add(fig);
+            Pen p = new Pen(mcolor, mwidth);
+            var x = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+            var y = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+            var r = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+            mypaint.DrawEllipse(p, x, y, r, r);
+            mypaint.DrawLine(p, x, y, x, y);
+           if (fig == Circle)
+           
+            pbDraw.Image = pic;
+        }
+
+        private void lbFigures_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var fig = lbFigures.SelectedItem as FiguresData;
+            dgwDraw.Rows.Clear();
+            foreach (var v in fig.Data)
+            {
+                dgwDraw.Rows.Add(v.Key, v.Value);
             }
         }
 
@@ -179,7 +221,7 @@ namespace WindowsFormsApp3
                 switch (figData.Name)
                 {
                     case "Line":
-                        fig = new Line(figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
+                        fig = new Line(figData.Data["X"], figData.Data["Y"], figData.Data["X1"], figData.Data["Y1"]);
                         break;
                     case "Circle":
                         fig = new Circle(figData.Data["X"], figData.Data["Y"], figData.Data["Radius"]);
