@@ -136,19 +136,43 @@ namespace WindowsFormsApp3
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
-           
-
-            var fig = FigureFab.Make(lbFigures.SelectedItem as FiguresData);
-            if (fig != null)
-                figures.Add(fig);
             Pen p = new Pen(mcolor, mwidth);
-            var x = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
-            var y = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
-            var r = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
-            mypaint.DrawEllipse(p, x, y, r, r);
-            mypaint.DrawLine(p, x, y, x, y);
-           if (fig == Circle)
-           
+ 
+           if (lbFigures.SelectedItem == lbFigures.Items[0])
+            {
+                var x = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var y = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var r = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                mypaint.DrawEllipse(p, x, y, r, r);
+            }
+           else if (lbFigures.SelectedItem == lbFigures.Items[1])
+            {
+                var x1 = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var y1 = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var x2 = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var y2 = float.Parse(dgwDraw.Rows[3].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                mypaint.DrawLine(p, x1,y1,x2,y2);
+            }
+            else if (lbFigures.SelectedItem == lbFigures.Items[2])
+            {
+                var x = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var y = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var height = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                var width = float.Parse(dgwDraw.Rows[3].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                mypaint.DrawRectangle(p, x, y, height, width);
+            }
+            else if (lbFigures.SelectedItem == lbFigures.Items[3])
+            {
+                Point[] points = new Point[3];
+                points[0].X = Convert.ToInt32(dgwDraw.Rows[0].Cells[1].Value.ToString()); 
+                points[0].Y = Convert.ToInt32(dgwDraw.Rows[1].Cells[1].Value.ToString());
+                points[1].X = Convert.ToInt32(dgwDraw.Rows[2].Cells[1].Value.ToString());
+                points[1].Y = Convert.ToInt32(dgwDraw.Rows[3].Cells[1].Value.ToString());
+                points[2].X = Convert.ToInt32(dgwDraw.Rows[4].Cells[1].Value.ToString());
+                points[2].Y = Convert.ToInt32(dgwDraw.Rows[5].Cells[1].Value.ToString());
+                mypaint.DrawPolygon(p, points);
+            }
+
             pbDraw.Image = pic;
         }
 
@@ -221,13 +245,13 @@ namespace WindowsFormsApp3
                 switch (figData.Name)
                 {
                     case "Line":
-                        fig = new Line(figData.Data["X"], figData.Data["Y"], figData.Data["X1"], figData.Data["Y1"]);
+                        fig = new Line(figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
                         break;
                     case "Circle":
                         fig = new Circle(figData.Data["X"], figData.Data["Y"], figData.Data["Radius"]);
                         break;
                     case "Rectangle":
-                        fig = new Rectangle(figData.Data["X"], figData.Data["Y"], figData.Data["Height"], figData.Data["Weight"]);
+                        fig = new Rectangle(figData.Data["X"], figData.Data["Y"], figData.Data["Height"], figData.Data["Width"]);
                         break;
                     case "Triangle":
                         fig = new Triangle(figData.Data["X"], figData.Data["Y"], figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
@@ -272,7 +296,7 @@ namespace WindowsFormsApp3
                     { "X", 0 },
                     { "Y", 0 },
                     { "Height", 0 },
-                    { "Weight", 0 }
+                    { "Width", 0 }
                 }
                 });
 
