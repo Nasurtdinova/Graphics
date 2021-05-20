@@ -32,7 +32,7 @@ namespace WindowsFormsApp3
 
             edLineWidth.Value = 1;
             mcolor = Color.Black;
-            mshape = "Line";
+            mshape = "Circle";
             pic = new Bitmap(pbDraw.Width, pbDraw.Height);
 
             figures = new List<Figure>();
@@ -90,8 +90,7 @@ namespace WindowsFormsApp3
             diffXY = Math.Sqrt((diffX * diffX) + (diffY * diffY));
             tb3.Text = Convert.ToString(diffXY);
         }
-
-
+        
         private void btnClear_Click_1(object sender, EventArgs e)
         {
             mypaint.Clear(Color.White);
@@ -137,21 +136,21 @@ namespace WindowsFormsApp3
         private void btnDraw_Click(object sender, EventArgs e)
         {
             Pen p = new Pen(mcolor, mwidth);
- 
-           if (lbFigures.SelectedItem == lbFigures.Items[0])
+
+            if (lbFigures.SelectedItem == lbFigures.Items[0])
             {
                 var x = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 var y = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 var r = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 mypaint.DrawEllipse(p, x, y, r, r);
             }
-           else if (lbFigures.SelectedItem == lbFigures.Items[1])
+            else if (lbFigures.SelectedItem == lbFigures.Items[1])
             {
                 var x1 = float.Parse(dgwDraw.Rows[0].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 var y1 = float.Parse(dgwDraw.Rows[1].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 var x2 = float.Parse(dgwDraw.Rows[2].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 var y2 = float.Parse(dgwDraw.Rows[3].Cells[1].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
-                mypaint.DrawLine(p, x1,y1,x2,y2);
+                mypaint.DrawLine(p, x1, y1, x2, y2);
             }
             else if (lbFigures.SelectedItem == lbFigures.Items[2])
             {
@@ -164,7 +163,7 @@ namespace WindowsFormsApp3
             else if (lbFigures.SelectedItem == lbFigures.Items[3])
             {
                 Point[] points = new Point[3];
-                points[0].X = Convert.ToInt32(dgwDraw.Rows[0].Cells[1].Value.ToString()); 
+                points[0].X = Convert.ToInt32(dgwDraw.Rows[0].Cells[1].Value.ToString());
                 points[0].Y = Convert.ToInt32(dgwDraw.Rows[1].Cells[1].Value.ToString());
                 points[1].X = Convert.ToInt32(dgwDraw.Rows[2].Cells[1].Value.ToString());
                 points[1].Y = Convert.ToInt32(dgwDraw.Rows[3].Cells[1].Value.ToString());
@@ -220,102 +219,10 @@ namespace WindowsFormsApp3
             pbDraw.Image = pic;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void GraphicsMain_Load(object sender, EventArgs e)
         {
             mypaint = Graphics.FromImage(pic);
-        }
-
-        public class FiguresData
-        {
-            public string Name;
-            public Dictionary<string, int> Data;
-
-            public override string ToString()
-            {
-                return Name;
-            }
-        }
-
-        static public class FigureFab
-        {
-            public static Figure Make(FiguresData figData)
-            {
-                Figure fig = null;
-
-                switch (figData.Name)
-                {
-                    case "Line":
-                        fig = new Line(figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
-                        break;
-                    case "Circle":
-                        fig = new Circle(figData.Data["X"], figData.Data["Y"], figData.Data["Radius"]);
-                        break;
-                    case "Rectangle":
-                        fig = new Rectangle(figData.Data["X"], figData.Data["Y"], figData.Data["Height"], figData.Data["Width"]);
-                        break;
-                    case "Triangle":
-                        fig = new Triangle(figData.Data["X"], figData.Data["Y"], figData.Data["X1"], figData.Data["Y1"], figData.Data["X2"], figData.Data["Y2"]);
-                        break;
-                }
-
-                return fig;
-            }
-
-            public static List<FiguresData> InitFiguresData()
-            {
-                var figuresData = new List<FiguresData>();
-
-                figuresData.Add(new FiguresData
-                {
-                    Name = "Circle",
-                    Data = new Dictionary<string, int>
-                {
-                    { "X", 0 },
-                    { "Y", 0 },
-                    { "Radius", 0 }
-                }
-                });
-
-                figuresData.Add(new FiguresData
-                {
-                    Name = "Line",
-                    Data = new Dictionary<string, int>
-                {
-                    { "X1", 0 },
-                    { "Y1", 0 },
-                    { "X2", 0 },
-                    { "Y2", 0 }
-                }
-                });
-
-                figuresData.Add(new FiguresData
-                {
-                    Name = "Rectangle",
-                    Data = new Dictionary<string, int>
-                {
-                    { "X", 0 },
-                    { "Y", 0 },
-                    { "Height", 0 },
-                    { "Width", 0 }
-                }
-                });
-
-                figuresData.Add(new FiguresData
-                {
-                    Name = "Triangle",
-                    Data = new Dictionary<string, int>
-                {
-                    { "X", 0 },
-                    { "Y", 0 },
-                    { "X1", 0 },
-                    { "Y1", 0 },
-                    { "X2", 0 },
-                    { "Y2", 0 },
-                }
-                });
-
-                return figuresData;
-            }
-        }
+            pbDraw.Refresh();
+        }      
     }
 }
